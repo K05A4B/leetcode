@@ -1,0 +1,52 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+	var strs = []string{
+		"flower","flow","flight",
+		// "ab", "a",
+		// "reflower","flow","flight",
+	}
+
+	fmt.Println(longestCommonPrefix(strs))
+}
+
+func longestCommonPrefix(strs []string) string {
+	var Outputs = ""
+	var char string
+	var StrsLen = len(strs)
+	var k = 0
+	var befroe string 
+
+	if FirstStr := strs[0];FirstStr != "" {
+		befroe = string(FirstStr[0])
+	} else {
+		return ""
+	}
+
+	sort.Slice(strs, func(x, y int) bool {
+		return len(strs[x]) < len(strs[y]) // 按字符串长度 降序 排列
+	})
+
+	for i := 0; i < StrsLen; i++ {
+		if strs[i] == "" {return ""}
+		if len(strs[i]) <= 1 && StrsLen <= 1 {return strs[i]}
+		if len(strs[i]) == 1 && string(strs[0][0]) == strs[0] {return strs[i]}
+		for j := 0; j < len(strs[i]); j++ {
+			char = string(strs[i][j])
+			if befroe != char && i != (StrsLen - 1) {return ""}
+			if befroe == char && i == (StrsLen - 1) {
+				k++
+				Outputs += char
+				if k >= len(strs[i]) && i == (StrsLen - 1) {return Outputs}
+				befroe = string(strs[0][k])
+			}
+		}
+	}
+
+	return Outputs
+}
