@@ -42,20 +42,3 @@ func setZeroes(matrix [][]int)  {
 		}
 	}
 }
-
-// func set(matrix [][]int, blackList * [][]int, x, y int) {
-// 	var position []int
-// 	position = append(position, x, y)
-// 	*blackList = append(*blackList, position)
-// 	matrix[position[0]][position[1]] = 0
-// }
-
-// func isExistInBlackList(blackList[][]int, x, y int) bool {
-// 	for _, value := range blackList {
-// 		if value[0] == x && value[1] == y {
-// 			fmt.Println(false)
-// 			return false
-// 		}
-// 	}
-// 	return true
-// }
